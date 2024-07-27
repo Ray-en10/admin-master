@@ -1,0 +1,48 @@
+<div class="page">
+  <h1>La liste de tous les Responsables:</h1>
+  <div *ngIf="responsables && responsables.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Agence Name</th>
+          <th>Agence Address</th>
+          <th>Bank Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let responsable of responsables; let i = index">
+          <td>{{ responsable.id }}</td>
+          <td>{{ responsable.name }}</td>
+          <td>{{ responsable.lastName }}</td>
+          <td>{{ responsable.email }}</td>
+          <td>{{ responsable.phone }}</td>
+          <td>{{ responsable.agence?.name }}</td>
+          <td>{{ responsable.agence?.address }}</td>
+          <td>{{ responsable.agence?.bank?.full_name }}</td>
+          <td>
+            <div class="buttns">
+
+              <button class="Btn2" (click)="deleteResponsable(responsable.id)">
+                <svg class="svg2" viewBox="0 0  24 24">
+                  <path
+                    d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!responsables || responsables.length === 0">
+    <p>Aucun responsable trouvé.</p>
+  </div>
+  <a href="/addclient"><button class="btn1"><span>Ajouter Responsable</span></button></a>
+</div>
